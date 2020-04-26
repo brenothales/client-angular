@@ -1,0 +1,48 @@
+<div *ngIf="!usuario">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="usuario">
+<mat-card>
+<mat-card-header>
+    <mat-card-title>
+      <h2>{{usuario?.name}} {{usuario?.lastname}}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>Data de Nascimento: {{ usuario?.dateNasc | date:'dd/MM/yyyy' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Detalhe">
+        <h3>Endereço</h3>
+        <p>{{ usuario?.address.street }} </p>
+        <p>Cidade: {{ usuario?.address.city }} - Estado: {{ usuario?.address.state }} - {{ usuario?.address.country }}</p>
+        <p>CEP: {{ usuario?.address.zip }}</p>
+        <mat-divider></mat-divider>
+        <br>
+        <h3>Contato</h3>
+        E-mails:
+        <div *ngFor="let item of usuario.contact?.emails">
+          <li>{{ item?.value }}</li>
+        </div>
+        <br>
+        Telefones:
+        <div *ngFor="let item of usuario.contact?.phones">
+          <li>{{ item?.value }}</li>
+        </div>
+        <br><br>
+        <mat-divider></mat-divider>
+        <h3>Conta</h3>
+        <p>Login: {{ usuario?.login }} </p>
+        <span mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder Senha'" [attr.aria-pressed]="hide">
+          <p>Senha: {{ hide ? '****************' : usuario?.password }} <span> <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></span> </p>
+        </span>
+
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-card-content>
+</mat-card>
+</div>
+<div>
+<button mat-button color="primary" (click)="backToHome()"> <strong>Voltar</strong> </button>
+</div>

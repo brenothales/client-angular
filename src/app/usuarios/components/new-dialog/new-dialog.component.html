@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Nova Usuário</h2>
+<mat-dialog-content>
+  <div class="example-container">
+
+    <mat-form-field>
+      <input matInput placeholder="Nome" [(ngModel)]="usuario.name" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Sobrenome" [(ngModel)]="usuario.lastname" required />
+    </mat-form-field>
+     <mat-form-field>
+      <input matInput placeholder="Login" [(ngModel)]="usuario.login" required />
+    </mat-form-field>
+     <mat-form-field>
+      <input matInput placeholder="Senha" [(ngModel)]="usuario.password" required />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="onCancel()">
+    <mat-icon>cancel</mat-icon> Cancelar
+  </button>
+  <button mat-button color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon> Salvar
+  </button>
+</mat-dialog-actions>
+
